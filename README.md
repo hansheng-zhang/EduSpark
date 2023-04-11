@@ -1,2 +1,2 @@
 # EduSpark
-Course Project
+CSC3170 Course Project
