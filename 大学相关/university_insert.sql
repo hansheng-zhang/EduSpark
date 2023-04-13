@@ -1,6 +1,6 @@
 USE `eduspark` ;
 
-INSERT INTO `university` (`iduniversity`, `University_name`, `Branch_unniversity`, `Region`, `Location`, `QSranking`) VALUES
+INSERT INTO `university` (`UID`, `University_name`, `Branch_unniversity`, `Region`, `Location`, `QSranking`) VALUES
 ('01', 'Massachusetts Institute of Technology', FALSE, 'United States', 'Cambridge, MA, United States', '1'),
 ('02', 'Stanford', FALSE, 'United States', 'Stanford, CA, United States', '3'),
 ('03', 'University of Oxford', FALSE, 'United Kingdom', 'Oxford, ENG, United Kingdom', '4'),
