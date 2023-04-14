@@ -17,7 +17,7 @@ CREATE TABLE `uni_maj` (
   `UID` INT NOT NULL,
   `MID` VARCHAR(45) NOT NULL,
   `Major_name` VARCHAR(45) NOT NULL,
-  `Major_type` VARCHAR(45) NOT NULL, -- 研究型或授课型
+  `Major_type` VARCHAR(45) NOT NULL, -- 理科或文科
   `Teaching_language` VARCHAR(45) NOT NULL,  
   `Major_scale` INT NULL, -- 人数
   PRIMARY KEY (`UID`, `MID`),
