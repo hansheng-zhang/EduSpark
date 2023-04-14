@@ -23,13 +23,15 @@ CREATE TABLE appliers (
 
 -- Create the 'applications' table
 CREATE TABLE applications (
-  program_id INT REFERENCES Program(Program_ID),
-  applier_id INT REFERENCES appliers(applier_id),
+  program_id INT,
+  applier_id INT,
   status VARCHAR(20),
   date DATE,
   recom_id INT,
   ps_id INT,
-  PRIMARY KEY(program_id, applier_id)
+  PRIMARY KEY(program_id, applier_id),
+  FOREIGN KEY (program_id) REFERENCES Program(Program_ID),
+  FOREIGN KEY (applier_id) REFERENCES appliers(applier_id)
 );
 
 -- Create the 'undergraduate universities' table
