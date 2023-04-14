@@ -2,7 +2,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # 读取Excel文件
-file_path = '大学相关/大学.xlsx'
+file_path = '大学相关/专业.xlsx'
 sheet_name = 'Sheet1'
 df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
 
@@ -11,5 +11,5 @@ db_connection_string = "mysql+pymysql://root:@localhost:3306/Eduspark"
 engine = create_engine(db_connection_string)
 
 # 将数据插入SQL表格
-table_name = 'university'
+table_name = 'uni_maj'
 df.to_sql(table_name, engine, if_exists='append', index=False)

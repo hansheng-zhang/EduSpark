@@ -5,7 +5,7 @@ USE EduSpark;
 -- Create the 'Program' table
 CREATE TABLE Program (
     Program_ID INT PRIMARY KEY,
-    University_ID INT,
+    University_ID INT NOT NULL,
     Program_Name VARCHAR(255) NOT NULL,
     Early_DDL DATE,
     Final_DDL DATE,
