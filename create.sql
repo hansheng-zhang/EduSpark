@@ -48,11 +48,11 @@ CREATE TABLE program (
 -- Create the 'Standardized_Test' table (weak entity)
 CREATE TABLE standardized_test (
     Program_ID INT PRIMARY KEY,
-    GRE_Required BOOLEAN,
-    Cut_Off_Point INT,
-    TOEFL_Accepted BOOLEAN,
+    GRE_Required VARCHAR(50) NOT NULL,
+    GRE_Cut_Off_Point INT,
+    TOEFL_Accepted VARCHAR(50) NOT NULL,
     TOEFL_Requirement INT,
-    IELTS_Accepted BOOLEAN,
+    IELTS_Accepted VARCHAR(50) NOT NULL,
     IELTS_Requirement INT,
     FOREIGN KEY (Program_ID) REFERENCES program(Program_ID) ON DELETE CASCADE
 );

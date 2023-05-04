@@ -22,31 +22,7 @@ df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
 table_name = 'uni_maj'
 df.to_sql(table_name, engine, if_exists='append', index=False)
 
-# 3. Undergraduate university
-file_path = 'Application/Undergraduate university.xlsx'
-sheet_name = 'Sheet1'
-df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
-
-table_name = 'undergra_univers'
-df.to_sql(table_name, engine, if_exists='append', index=False)
-
-# 4. Appliers
-file_path = 'Application/Appliers.xlsx'
-sheet_name = 'Sheet1'
-df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
-
-table_name = 'appliers'
-df.to_sql(table_name, engine, if_exists='append', index=False)
-
-# 5. Applications
-file_path = 'Application/Applications.xlsx'
-sheet_name = 'Sheet1'
-df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
-
-table_name = 'applications'
-df.to_sql(table_name, engine, if_exists='append', index=False)
-
-# 6. Programs
+# 3. Programs
 file_path = 'Program/Program.xlsx'
 sheet_name = 'Sheet1'
 df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
@@ -54,7 +30,7 @@ df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
 table_name = 'program'
 df.to_sql(table_name, engine, if_exists='append', index=False)
 
-# 7. Employment
+# 4. Employment
 file_path = 'Program/Employment.xlsx'
 sheet_name = 'Sheet1'
 df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
@@ -62,10 +38,34 @@ df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
 table_name = 'employment'
 df.to_sql(table_name, engine, if_exists='append', index=False)
 
-# 8. Standardized test
+# 5. Standardized test
 file_path = 'Program/Standardized test.xlsx'
 sheet_name = 'Sheet1'
 df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
 
 table_name = 'standardized_test'
+df.to_sql(table_name, engine, if_exists='append', index=False)
+
+# 6. Undergraduate university
+file_path = 'Application/Undergraduate university.xlsx'
+sheet_name = 'Sheet1'
+df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
+
+table_name = 'undergra_univers'
+df.to_sql(table_name, engine, if_exists='append', index=False)
+
+# 7. Appliers
+file_path = 'Application/Appliers.xlsx'
+sheet_name = 'Sheet1'
+df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
+
+table_name = 'appliers'
+df.to_sql(table_name, engine, if_exists='append', index=False)
+
+# 8. Applications
+file_path = 'Application/Applications.xlsx'
+sheet_name = 'Sheet1'
+df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
+
+table_name = 'applications'
 df.to_sql(table_name, engine, if_exists='append', index=False)
