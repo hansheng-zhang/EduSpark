@@ -1,3 +1,3 @@
 # EduSpark
 
-Database System Course Project
+CSC3170 Database System Course Project
