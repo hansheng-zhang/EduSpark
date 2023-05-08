@@ -1,3 +1,4 @@
+import pymysql
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
@@ -6,7 +7,31 @@ from sklearn.metrics import classification_report
 from sklearn import tree
 import matplotlib.pyplot as plt
 
-# Get the data from the database (skip this step)
+# Connect to the database
+connection = pymysql.connect(host='localhost',
+                             user='<your_username>',
+                             password='<your_password>',
+                             db='EduSpark',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+
+# Execute SQL query and fetch the data
+try:
+    with connection.cursor() as cursor:
+        sql = """
+        SELECT u.QSranking as QS_ranking, a.toefl_score as TOEFL_Score, a.gre_score as GRE_Score, a.GPA
+        FROM applications app
+        JOIN appliers a ON app.applier_id = a.applier_id
+        JOIN program p ON app.program_id = p.Program_ID
+        JOIN university u ON p.University_ID = u.UID
+        """
+        cursor.execute(sql)
+        data = cursor.fetchall()
+finally:
+    connection.close()
+
+# Convert the fetched data into a DataFrame
+data = pd.DataFrame(data)
 
 # Split the dataset into features and labels
 X = data[['TOEFL_Score', 'GRE_Score', 'GPA']]
