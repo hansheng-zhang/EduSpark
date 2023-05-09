@@ -1,4 +1,4 @@
--- 1. 地区查询
+-- 1. Region of universities
 SELECT university.region, COUNT(*) AS num
 FROM university, program, applications
 WHERE university.UID = program.University_ID AND program.Program_ID = applications.program_id AND applications.status = 'Accepted' AND applications.applier_id IN (
@@ -8,7 +8,7 @@ WHERE university.UID = program.University_ID AND program.Program_ID = applicatio
 )
 GROUP BY Region
 
--- 2. 学校查询
+-- 2. Get the average GPA, GRE score and TOEFL score of appliers who are accepted by CSE@MIT in 2022
 SELECT AVG(appliers.GPA), AVG(appliers.GRE_score), AVG(appliers.TOEFL_score) 
 FROM appliers
 JOIN applications
@@ -20,7 +20,7 @@ ON appliers.univer_id = undergra_univers.univer_id
 WHERE Program_Name = 'CSE@MIT' AND status = 'Accepted' AND univer_name = 'Chinese University of Hong Kong, Shenzhen' AND YEAR(applications.date) = 2022;
 
 
--- 3. CUHKSZ的申请人
+-- 3. Applicants from CUHK(SZ)
 SELECT p.Program_Name, COUNT(a.applier_id) as number
 FROM applications a
 JOIN appliers ap ON a.applier_id = ap.applier_id
@@ -33,7 +33,7 @@ AND un.Abbreviation = 'MIT'
 GROUP BY p.Program_Name
 ORDER BY number DESC;
 
--- 4. MIT最低分数线
+-- 4. MIT minimum GPA
 SELECT ap.applier_id, ap.first_name, ap.last_name, ap.gender, ap.date_of_birth, ap.undergraduate_program, uu.univer_name, ap.GPA, ap.toefl_score, ap.ielts_score, ap.gre_score, ap.gmat_score
 FROM appliers AS ap
 JOIN applications AS a ON a.applier_id = ap.applier_id
@@ -50,7 +50,7 @@ AND ap.GPA = (
     WHERE u2.University_name = 'Massachusetts Institute of Technology'
 );
 
--- 5. CS项目成功录取
+-- 5. Accepted CS applicants
 SELECT ap.applier_id, ap.first_name, ap.last_name, ap.undergraduate_program, uu.univer_name, ap.GPA, a.program_id, p.Program_Name, u.University_name, a.status
 FROM applications AS a
 JOIN appliers AS ap ON a.applier_id = ap.applier_id
@@ -60,7 +60,7 @@ JOIN uni_maj AS um ON u.UID = um.UID
 JOIN undergra_univers AS uu ON ap.univer_id = uu.univer_id
 WHERE a.status = 'Accepted' AND um.Major_name = 'Computer Science';
 
--- 6. 打标录取
+-- 6. Accepted CS applicants with GPA > 3.5 and GRE > 320
 SELECT ap.applier_id, ap.first_name, ap.last_name, ap.GPA, ap.gre_score, p.Program_ID, p.Program_Name, u.University_name, a.status
 FROM applications AS a
 JOIN appliers AS ap ON a.applier_id = ap.applier_id
